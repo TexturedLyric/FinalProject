@@ -1,15 +1,13 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
-namespace FinalProject.Models
+namespace FinalProjet.Models
 {
-    public abstract class Client
+    public class Client : People
     {
-        public int ID { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; }
-
+        public string Client {get; set;}
     }
 }
