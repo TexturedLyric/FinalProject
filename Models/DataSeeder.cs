@@ -46,7 +46,10 @@ namespace FinalProjet.Models
                     new Member { FirstName="Anyssa", LastName="Mata", Major="CIS", Email="am0@buff.wt.edu", Phone="555-555-5555" },
                     new Member { FirstName="Kayla", LastName="Wilhelm", Major="CIS", Email="kw0@buff.wt.edu", Phone="555-555-5555" },
                     new Member { FirstName="Kyla", LastName="Matthews", Major="CIS", Email="km0@buff.wt.edu", Phone="555-555-5555" },
-                    new Member { FirstName="Sarah", LastName="Stebbins", Major="CIS", Email="ss0@buff.wt.edu", Phone="555-555-5555" }
+                    new Member { FirstName="Sarah", LastName="Stebbins", Major="CIS", Email="ss0@buff.wt.edu", Phone="555-555-5555" },
+                    new Member { FirstName="Lisa", LastName="Dee", Major="CIS", Email="ld0@buff.wt.edu", Phone="555-555-5555" },
+                    new Member { FirstName="Andrew", LastName="Wilhem", Major="CIS", Email="aw0@buff.wt.edu", Phone="555-555-5555" },
+                    new Member { FirstName="Ben", LastName="Seago", Major="CIS", Email="bs0@buff.wt.edu", Phone="555-555-5555" },
                 };
                 context.AddRange(members);
                 context.SaveChanges();
