@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace BuffteksWebsite.Models
+namespace FinalProject.Models
 {
     public class FinalDbContext : DbContext
     {
@@ -27,7 +27,7 @@ namespace BuffteksWebsite.Models
 
             //establish the join through the keys
             modelBuilder.Entity<ProjectRoster>()
-                .HasKey(pr => new {pr.ProjectID, pr.ProjectParticipantID});
+                .HasKey(pr => new {pr.ProjectID, pr.ParticipantID});
 
             //set up the one to many map from Project to ProjectRoster
             modelBuilder.Entity<ProjectRoster>()
@@ -37,9 +37,9 @@ namespace BuffteksWebsite.Models
 
             //set up the one to many map from ProjectParticipant to ProjectRoster
             modelBuilder.Entity<ProjectRoster>()
-                .HasOne(pr => pr.ProjectParticipant)
+                .HasOne(pr => pr.Participant)
                 .WithMany(pp => pp.Projects)
-                .HasForeignKey(pr => pr.ProjectParticipantID);
+                .HasForeignKey(pr => pr.ParticipantID);
 
         }
     }

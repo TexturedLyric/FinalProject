@@ -4,28 +4,27 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FinalProjet.Models
+namespace FinalProject.Models
 {
 
     public class DataSeeder
     {
         public static void Initialize(IServiceProvider serviceProvider)
         {
-            using(var context = new FinalDbContext(serviceProvider.GetRequiredService<DbContextOptions<BuffteksWebsiteContext>>()))
+            using(var context = new FinalDbContext(serviceProvider.GetRequiredService<DbContextOptions<FinalDbContext>>()))
             {
 
                 //CLIENTS
                 if (context.Clients.Any())
                 {
-                    //leave, there is already data in the database
                     return; 
                 }
 
                 var clients = new List<Client>
                 {
-                    new Client { FirstName="Joanna", LastName="Summerlin", CompanyName="NameGenorator", Email="jsummerlin@nm.com", Phone="555-555-5555" },
-                    new Client { FirstName="Zack", LastName="McGuire", CompanyName="World Animation", Email="zmcguire@wa.com", Phone="555-555-5555" },
-                    new Client { FirstName="Stefani", LastName="Wilhelm", CompanyName="Steftography", Email="swilhelm@steftography.com", Phone="555-555-5555" }
+                    new Client { FirstName="Joanna", LastName="Summerlin", ClientID="NameGenorator", Email="jsummerlin@nm.com", Phone="555-555-5555" },
+                    new Client { FirstName="Zack", LastName="McGuire", ClientID="World Animation", Email="zmcguire@wa.com", Phone="555-555-5555" },
+                    new Client { FirstName="Stefani", LastName="Wilhelm", ClientID="Steftography", Email="swilhelm@steftography.com", Phone="555-555-5555" }
                 };
                 context.AddRange(clients);
                 context.SaveChanges();
@@ -34,22 +33,21 @@ namespace FinalProjet.Models
                 // CLIENTS
                 if (context.Members.Any())
                 {
-                    //leave, there is already data in the database
                     return; 
                 }
 
                 var members = new List<Member>
                 {
-                    new Member { FirstName="Lee", LastName="Baca", Major="CIS", Email="lb0@buff.wt.edu", Phone="555-555-5555" },
-                    new Member { FirstName="Tristen", LastName="Huseman", Major="CIS", Email="th0@buff.wt.edu", Phone="555-555-5555" },
-                    new Member { FirstName="Daunte", LastName="McCray", Major="CIS", Email="dm0@buff.wt.edu", Phone="555-555-5555" },
-                    new Member { FirstName="Anyssa", LastName="Mata", Major="CIS", Email="am0@buff.wt.edu", Phone="555-555-5555" },
-                    new Member { FirstName="Kayla", LastName="Wilhelm", Major="CIS", Email="kw0@buff.wt.edu", Phone="555-555-5555" },
-                    new Member { FirstName="Kyla", LastName="Matthews", Major="CIS", Email="km0@buff.wt.edu", Phone="555-555-5555" },
-                    new Member { FirstName="Sarah", LastName="Stebbins", Major="CIS", Email="ss0@buff.wt.edu", Phone="555-555-5555" },
-                    new Member { FirstName="Lisa", LastName="Dee", Major="CIS", Email="ld0@buff.wt.edu", Phone="555-555-5555" },
-                    new Member { FirstName="Andrew", LastName="Wilhem", Major="CIS", Email="aw0@buff.wt.edu", Phone="555-555-5555" },
-                    new Member { FirstName="Ben", LastName="Seago", Major="CIS", Email="bs0@buff.wt.edu", Phone="555-555-5555" },
+                    new Member { FirstName="Lee", LastName="Baca",Email="lb0@buff.wt.edu", Phone="555-555-5555" },
+                    new Member { FirstName="Tristen", LastName="Huseman",Email="th0@buff.wt.edu", Phone="555-555-5555" },
+                    new Member { FirstName="Daunte", LastName="McCray",Email="dm0@buff.wt.edu", Phone="555-555-5555" },
+                    new Member { FirstName="Anyssa", LastName="Mata",Email="am0@buff.wt.edu", Phone="555-555-5555" },
+                    new Member { FirstName="Kayla", LastName="Wilhelm",Email="kw0@buff.wt.edu", Phone="555-555-5555" },
+                    new Member { FirstName="Kyla", LastName="Matthews",Email="km0@buff.wt.edu", Phone="555-555-5555" },
+                    new Member { FirstName="Sarah", LastName="Stebbins",Email="ss0@buff.wt.edu", Phone="555-555-5555" },
+                    new Member { FirstName="Lisa", LastName="Dee",Email="ld0@buff.wt.edu", Phone="555-555-5555" },
+                    new Member { FirstName="Andrew", LastName="Wilhem",Email="aw0@buff.wt.edu", Phone="555-555-5555" },
+                    new Member { FirstName="Ben", LastName="Seago",Email="bs0@buff.wt.edu", Phone="555-555-5555" },
                 };
                 context.AddRange(members);
                 context.SaveChanges();
@@ -57,7 +55,6 @@ namespace FinalProjet.Models
                 // PROJECTS
                 if (context.Projects.Any())
                 {
-                    //leave, there is already data in the database
                     return; 
                 }
 
@@ -73,13 +70,12 @@ namespace FinalProjet.Models
                 //PROJECT ROSTER BRIDGE TABLE - THERE MUST BE PROJECTS AND PARTICIPANTS MADE FIRST
                 if (context.ProjectRoster.Any())
                 {
-                    //leave, there is already data in the database
                     return; 
                 }
 
                 
 
-                //quickly grab the recent records added to the DB to get the IDs
+                //grabs the recent records added to the DB to get the IDs
                 var projectsFromDb = context.Projects.ToList();
                 var clientsFromDb = context.Clients.ToList();
                 var membersFromDb = context.Members.ToList();
@@ -89,23 +85,23 @@ namespace FinalProjet.Models
                     //take the first project from above, the first client from above, and the first three students from above.
                     new ProjectRoster { ProjectID = projectsFromDb.ElementAt(0).ID.ToString(), 
                                         Project = projectsFromDb.ElementAt(0), 
-                                        ProjectParticipantID = clientsFromDb.ElementAt(0).ID.ToString(),
-                                        ProjectParticipant = clientsFromDb.ElementAt(0) },
+                                        ParticipantID = clientsFromDb.ElementAt(0).ID.ToString(),
+                                        Participant = clientsFromDb.ElementAt(0) },
 
                     new ProjectRoster { ProjectID = projectsFromDb.ElementAt(0).ID.ToString(), 
                                         Project = projectsFromDb.ElementAt(0), 
-                                        ProjectParticipantID = membersFromDb.ElementAt(0).ID.ToString(),
-                                        ProjectParticipant = membersFromDb.ElementAt(0) },
+                                        ParticipantID = membersFromDb.ElementAt(0).ID.ToString(),
+                                        Participant = membersFromDb.ElementAt(0) },
 
                     new ProjectRoster { ProjectID = projectsFromDb.ElementAt(0).ID.ToString(), 
                                         Project = projectsFromDb.ElementAt(0), 
-                                        ProjectParticipantID = membersFromDb.ElementAt(1).ID.ToString(),
-                                        ProjectParticipant = membersFromDb.ElementAt(1) },
+                                        ParticipantID = membersFromDb.ElementAt(1).ID.ToString(),
+                                        Participant = membersFromDb.ElementAt(1) },
 
                     new ProjectRoster { ProjectID = projectsFromDb.ElementAt(0).ID.ToString(), 
                                         Project = projectsFromDb.ElementAt(0), 
-                                        ProjectParticipantID = membersFromDb.ElementAt(2).ID.ToString(),
-                                        ProjectParticipant = membersFromDb.ElementAt(2) },                                        
+                                        ParticipantID = membersFromDb.ElementAt(2).ID.ToString(),
+                                        Participant = membersFromDb.ElementAt(2) },                                        
                 };
                 context.AddRange(projectroster);
                 context.SaveChanges();                

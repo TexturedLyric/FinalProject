@@ -4,10 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace FinalProjet.Models
+namespace FinalProject.Models
 {
     public class Client : People
     {
-        public string Client {get; set;}
+        public string ClientID {get; set;}
     }
 }

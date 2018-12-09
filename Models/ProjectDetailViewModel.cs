@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace BuffteksWebsite.Models
+namespace FinalProject.Models
 {
     public class ProjectDetailViewModel
     {
