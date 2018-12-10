@@ -9,11 +9,11 @@ namespace FinalProject.Models
     public class ProjectDetailViewModel
     {
 
-        public Project Project {get; set;}
+        public Project TheProject {get; set;}
 
-        public List<Client> Clients { get; set; }
+        public List<Client> ProjectClients { get; set; }
         
-        public List<Member> Members { get; set; }
+        public List<Member> ProjectMembers { get; set; }
 
         
     }

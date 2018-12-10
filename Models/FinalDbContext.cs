@@ -1,3 +1,4 @@
+using System;
 using Microsoft.EntityFrameworkCore;
 
 namespace FinalProject.Models
@@ -17,7 +18,7 @@ namespace FinalProject.Models
         protected override void  OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            modelBuilder.Entity<Member>().ToTable("Client");
+            modelBuilder.Entity<Member>().ToTable("Member");
             modelBuilder.Entity<Client>().ToTable("Client");
             modelBuilder.Entity<Project>().ToTable("Project");
 

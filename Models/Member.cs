@@ -6,6 +6,6 @@ namespace FinalProject.Models
 
     public class Member : People
     {
-        public string MemberID {get; set;}
+        public string Major {get; set;}
     }
 }
